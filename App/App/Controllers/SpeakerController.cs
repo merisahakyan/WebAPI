@@ -7,11 +7,11 @@ using System.Web.Mvc;
 
 namespace App.Controllers
 {
-    public class SpeakerController : Controller
+    public class SpeakerController : MultiTenantMvcController
     {
         public ActionResult Index()
         {
-            return View();
+            return View("Index",Tenant);
         }
     }
 }

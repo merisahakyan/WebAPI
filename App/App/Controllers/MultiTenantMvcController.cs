@@ -11,17 +11,18 @@ using System.Web;
 
 namespace App.Controllers
 {
-    public class MultiTenantMvcController:Controller
+    public class MultiTenantMvcController : Controller
     {
         public Tenant Tenant
         {
             get
             {
                 object multiTenant;
-                if(!Request.GetOwinContext().Environment.TryGetValue("MultiTenant",out multiTenant))
+                if (!Request.GetOwinContext().Environment.TryGetValue("MultiTenant", out multiTenant))
                 {
                     throw new ApplicationException("could not find Tenant");
                 }
+                
                 return (Tenant)multiTenant;
             }
         }

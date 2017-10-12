@@ -20,7 +20,7 @@ namespace App
                 throw new AccessViolationException("urlHost must be specified");
             }
             Tenant tenant;
-            using(var context=new MultiTenantContext())
+            using (var context = new MultiTenantContext())
             {
                 DbSet<Tenant> tenants = context.Tenants;
                 tenant = tenants.FirstOrDefault(a => a.DomainName.ToLower().Equals(urlHost)) ??
@@ -32,6 +32,7 @@ namespace App
             }
             return tenant;
         }
+        
         public void Configuration(IAppBuilder app)
         {
             app.Use(async (ctx, next) =>
